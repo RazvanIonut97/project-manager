@@ -1,4 +1,4 @@
-@props(['active'])
+@props(['active','href'])
 
 @php
 $classes = ($active ?? false)
@@ -8,5 +8,7 @@ $classes = ($active ?? false)
 @endphp
 
 <li {{ $attributes->merge(['class' => $classes]) }}>
-        {{$slot}}
+    <a href="{{$href}}">
+        {{ $slot }}
+    </a>
 </li>

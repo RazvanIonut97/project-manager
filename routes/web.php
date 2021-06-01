@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +30,7 @@ Route::get('/login', function () {
     return view('projects.index');
 })->name('login');
 
-Route::get('/register', function () {
-    return view('projects.index');
-})->name('register');
+Route::get('/register',[RegisterController::class,'index'])->name('register');
 
 Route::get('/profile', function () {
     return view('projects.index');
