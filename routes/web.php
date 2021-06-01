@@ -15,4 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('projects.index');
-});
+})->name('home');
+
+Route::get('/dashboard', function () {
+    return view('projects.index');
+})->name('dashboard');
+
+Route::get('/tasks', function () {
+    return view('projects.index');
+})->name('tasks');
+
+Route::get('/login', function () {
+    return view('projects.index');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('projects.index');
+})->name('register');
+
+Route::get('/profile', function () {
+    return view('projects.index');
+})->name('profile');
