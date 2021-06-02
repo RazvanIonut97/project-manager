@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
     <title>Document</title>
+    @livewireStyles
 </head>
-<body class="bg-gray-100 font-mono">
+<body class="bg-gray-400 font-mono">
     <x-nav-bar/>
     @yield('content')
+    
+    @livewireScripts
 </body>
 </html>

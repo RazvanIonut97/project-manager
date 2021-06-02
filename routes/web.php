@@ -30,7 +30,9 @@ Route::get('/login', function () {
     return view('projects.index');
 })->name('login');
 
-Route::get('/register',[RegisterController::class,'index'])->name('register');
+Route::get('/register',function () {
+    return view('auth.register');
+})->name('register');
 
 Route::get('/profile', function () {
     return view('projects.index');

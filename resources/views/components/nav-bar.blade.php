@@ -4,40 +4,44 @@
             <a href="">Project Manager</a>
         </h2>
     </div>
+    
+@if (auth()->user())
+<ul class="flex items-center">
 
-    <ul class="flex items-center">
+    <x-nav-element  :href="route('home')" :active="request()->routeIs('home')">
+            {{ __('Home') }}
+    </x-nav-element>
 
-        <x-nav-element  :href="route('home')" :active="request()->routeIs('home')">
-                {{ __('Home') }}
-        </x-nav-element>
+    <x-nav-element  :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        {{ __('Dashboard') }}
+    </x-nav-element>
 
-        <x-nav-element  :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            {{ __('Dashboard') }}
-        </x-nav-element>
+    <x-nav-element :href="route('tasks')" :active="request()->routeIs('tasks')">
+        {{ __('Tasks') }}
+    </x-nav-element>
 
-        <x-nav-element :href="route('tasks')" :active="request()->routeIs('tasks')">
-            {{ __('Tasks') }}
-        </x-nav-element>
+</ul>
 
-    </ul>
-    <ul class="flex items-center mr-3">
-        <x-nav-element :href="route('profile')" :active="request()->routeIs('profile')">
-            {{ __('Razvan') }}
-        </x-nav-element>
+<ul class="flex items-center mr-3">
+    <x-nav-element :href="route('profile')" :active="request()->routeIs('profile')">
+        {{ __('Razvan') }}
+    </x-nav-element>
+    <li class="text-gray-200 hover:bg-red-500 hover:text-white px-3  py-2 rounded-md ml-3">
+        <a href="#">
+            Logout
+        </a>
+    </li>
 
-        <x-nav-element :href="route('login')" :active="request()->routeIs('login')">
-            {{ __('Login') }}
-        </x-nav-element>
+</ul>
+@else
+<ul class="flex items-center mr-3">
+    <x-nav-element :href="route('login')" :active="request()->routeIs('login')">
+        {{ __('Login') }}
+    </x-nav-element>
 
-        <x-nav-element :href="route('register')" :active="request()->routeIs('register')">
-                {{ __('Register') }}
-        </x-nav-element>
-
-        <li class="text-gray-200 hover:bg-red-500 hover:text-white px-3  py-2 rounded-md ml-3">
-            <a href="#">
-                Logout
-            </a>
-        </li>
-
-    </ul>
+    <x-nav-element :href="route('register')" :active="request()->routeIs('register')">
+            {{ __('Register') }}
+    </x-nav-element>
+</ul>
+@endif
 </nav>
