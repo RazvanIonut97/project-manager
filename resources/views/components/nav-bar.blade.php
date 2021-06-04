@@ -27,9 +27,10 @@
         {{ __('Razvan') }}
     </x-nav-element>
     <li class="text-gray-200 hover:bg-red-500 hover:text-white px-3  py-2 rounded-md ml-3">
-        <a href="#">
-            Logout
-        </a>
+        <form action="{{route('logout')}}" method="POST">
+            @csrf
+            <button>Logout</button>
+        </form>
     </li>
 
 </ul>

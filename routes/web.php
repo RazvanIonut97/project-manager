@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,7 @@ Route::get('/tasks', function () {
 })->name('tasks');
 
 Route::get('/login', function () {
-    return view('projects.index');
+    return view('auth.login');
 })->name('login');
 
 Route::get('/register',function () {
@@ -37,3 +38,5 @@ Route::get('/register',function () {
 Route::get('/profile', function () {
     return view('projects.index');
 })->name('profile');
+
+Route::post('/logout',[LogoutController::class,'index'])->name('logout');
