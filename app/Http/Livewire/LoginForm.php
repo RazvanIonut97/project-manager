@@ -8,6 +8,7 @@ class LoginForm extends Component
 {
     public $email;
     public $password;
+    public $remember;
 
     protected $rules = [
         'email' => 'required|email',
@@ -22,7 +23,7 @@ class LoginForm extends Component
     {
         $validatedData = $this->validate();
 
-        if(!auth()->attempt(['email' => $this->email, 'password' => $this->password]) ){
+        if(!auth()->attempt(['email' => $this->email, 'password' => $this->password],$this->remember) ){
             return back()->with('status','Invalid login details');
         }
 

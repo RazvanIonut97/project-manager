@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<livewire:projects-list />
+
+<h2> Home</h2>
 @endsection

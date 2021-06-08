@@ -11,8 +11,9 @@
     <title>Document</title>
     @livewireStyles
 </head>
-<body class="bg-gray-400 font-mono">
+<body class="bg-gray-100 font-mono">
     <x-nav-bar/>
+    
     @yield('content')
 
     @if(request()->routeIs('dashboard'))

@@ -24,7 +24,7 @@
 
 <ul class="flex items-center mr-3">
     <x-nav-element :href="route('profile')" :active="request()->routeIs('profile')">
-        {{ __('Razvan') }}
+        {{auth()->user()->surname }}
     </x-nav-element>
     <li class="text-gray-200 hover:bg-red-500 hover:text-white px-3  py-2 rounded-md ml-3">
         <form action="{{route('logout')}}" method="POST">

@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('projects.index');
+    return view('home');
 })->name('home');
 
 Route::get('/dashboard', function () {
     return view('projects.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
 Route::get('/tasks', function () {
     return view('projects.index');
