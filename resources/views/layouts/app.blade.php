@@ -8,10 +8,11 @@
     @if(request()->routeIs('dashboard'))
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     @endif
+   
     <title>Document</title>
     @livewireStyles
 </head>
-<body class="bg-gray-100 font-mono">
+<body class="bg-gray-300 font-mono">
     <x-nav-bar/>
     
     @yield('content')
@@ -22,5 +23,6 @@
     @endif
 
     @livewireScripts
+    <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 </body>
 </html>

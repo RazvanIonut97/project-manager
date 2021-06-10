@@ -18,8 +18,10 @@ class AddProject extends ModalComponent
 
     public function onSubmit()
     {
-       
+
         $validatedData = $this->validate();
+        $validatedData['user_id']=auth()->user()->id;
+
         auth()->user()->projects()->create($validatedData);
 
         $this->emitTo('projects-list', 'refreshProjects');
