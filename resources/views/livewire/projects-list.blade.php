@@ -1,6 +1,6 @@
 <div class="flex justify-center ">
     <div class="w-full p-4 ">
-        <div class="flex justify-between  items-center h-12 mb-3 bg-gray-200 rounded">
+        <div class="flex justify-between  items-center h-12 mb-3 bg-gray-200 rounded-t-lg">
             <h3 class="text-xl pl-5">Dashboard</h3>
 
             <div class="relative">
@@ -12,7 +12,7 @@
 
         </div>
 
-        <div class="bg-gray-200 rounded">
+        <div class="bg-gray-200 rounded-b-lg">
            
             <div class="p-6  mt-6">
                 <div class="grid grid-cols-4">
