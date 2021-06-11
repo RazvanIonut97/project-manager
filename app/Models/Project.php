@@ -16,6 +16,30 @@ class Project extends Model
        'user_id',
        
    ];
+   protected static function booted()
+    {
+        static::created(function ($project) {
+            // Create default statuses
+            $project->groups()->createMany([
+                [
+                    'title' => 'Backlog',
+                    'order' => 1
+                ],
+                [
+                    'title' => 'Up Next',
+                    'order' => 2
+                ],
+                [
+                    'title' => 'In Progress',
+                    'order' => 3
+                ],
+                [
+                    'title' => 'Done',
+                    'order' => 4
+                ]
+            ]);
+        });
+    }
 public function users(){
     return $this->belongsToMany(User::class);
 }

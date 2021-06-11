@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
     
    
     <title>Document</title>
     @livewireStyles
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 </head>
-<body class="bg-gray-300 font-mono  scrollbar-thin ">
+<body class="bg-gray-300 font-mono overflow-hidden break-words">
     <x-nav-bar/>
     
     @yield('content')
@@ -24,5 +25,6 @@
 
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
+    
 </body>
 </html>
