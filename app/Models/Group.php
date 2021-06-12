@@ -15,6 +15,7 @@ class Group extends Model
     protected $fillable = [
         'title',
         'order',
+        'project_id'
     ];
 
     public function tasks(){

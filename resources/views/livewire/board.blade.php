@@ -1,5 +1,4 @@
-<div class="p-4 select-none">
-
+<div class="p-4 select-none ">
     <div class="h-12 w-full flex justify-between px-3 items-center mb-3 bg-gray-200 rounded">
         <div class="flex">
             @if ($project->user_id==auth()->user()->id)
@@ -7,18 +6,11 @@
             @else
             <h3 class="bg-yellow-600 text-white p-1 rounded mr-6">Colaborator</h3>
             @endif
-
-            <form wire:submit.prevent="addGroup" class="flex">
-                <input wire:model="newGroupName" type="text"
-                class="rounded pl-2  mr-2" placeholder="Enter list name">
-
-                <button class="bg-gray-800 text-white p-1 rounded">
-                    Add list
-                </button>
-            </form>
+            <h3>{{$project->name}}</h3>
         </div>
-        <h3>{{$project->name}}</h3>
-       <livewire:search-dropdown>
+        <livewire:add-list :project="$project->id">
+       
+       <livewire:search-dropdown :project="$project">
 
     </div>
 
@@ -91,8 +83,7 @@
 
             </div>
             @endforeach
-
-
+          
         </div>
 
     </div>

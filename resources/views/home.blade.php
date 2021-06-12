@@ -7,7 +7,7 @@
     <div class="h-3/4 ">asa</div>
 </div>
 
-
+<input type="date">
     
 
 @endsection
