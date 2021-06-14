@@ -1,46 +1,78 @@
-<div class="flex justify-center mt-5">
-    <div class="w-4/12 bg-white p-6 rounded-lg">
-        @if (session('status'))
-        <div class=" bg-red-500 p-4 rounded-lg mb-6 text-white text-center">
+<div class="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-md dark:bg-gray-800 mt-5">
+    <h1 class="text-3xl font-semibold text-center text-gray-700 dark:text-white">Login</h1>
+    @if (session('status'))
+    <div class=" bg-red-500 w-full mt-4">
+        <p class="block w-full px-4 py-2 mt-2 text-gray-700 bg-red-500 border border-gray-300 rounded-md ">
             {{ session('status')}}
-        </div>
-            
-        @endif
-        <form action="{{ route('register') }}" method="post" wire:submit.prevent="onSubmit">
-            @csrf
-            <div class="mb-4">
-                <label for="email" class="sr-only">Email</label>
-                <input wire:model="email" type="text" name="email" id="email" placeholder="Your email" 
-                class="bg-gray-100 border-2 w-full p-4 rounded-lg 
-                @error('email') border-red-500 @enderror" value="{{ old('email') }}" autocomplete="off">
-
-                @error('email')
-                    <div class="text-red-500 mt-2 text-sm">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="mb-4">
-                <label for="password" class="sr-only">Password</label>
-                <input  wire:model="password" type="password" name="password" id="password" placeholder="Choose a password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password') border-red-500 @enderror" value="">
-
-                @error('password')
-                    <div class="text-red-500 mt-2 text-sm">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="mb-4">
-                <div class="flex items-center">
-                    <input wire:model="remember" type="checkbox" name="remember" id="remember"class="mr-2">
-                    <label for="remember">Remember me</label>
-                </div>
-            </div>
-            <div>
-
-                <button type="submit" class="bg-gray-800 text-white px-4 py-3 rounded font-medium w-full">Login</button>
-            </div>
-        </form>
+        </p>
     </div>
+    @endif
+    <form class="mt-6" wire:submit.prevent="onSubmit">
+        <div>
+            <label for="username" class="block text-sm text-gray-800 dark:text-gray-200">Email</label>
+            <input wire:model="email" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 
+            rounded-md focus:border-blue-500 focus:outline-none focus:ring  
+            @error('email') border-red-500 @enderror"value="{{ old('email') }}" autocomplete="off">
+            @error('email')
+            <div class="text-red-500 mt-2 text-sm">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+
+        <div class="mt-4">
+            <div class="flex items-center justify-between">
+                <label for="password" class="block text-sm text-gray-800 ">Password</label>
+                <a href="#" class="text-xs text-gray-600  hover:underline">Forget Password?</a>
+            </div>
+
+            <input type="password" wire:model="password"
+                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md
+                 focus:border-blue-500  focus:outline-none focus:ring @error('password') border-red-500 @enderror"value="{{ old('email') }}" autocomplete="off">
+                 @error('password')
+                 <div class="text-red-500 mt-2 text-sm">
+                     {{ $message }}
+                 </div>
+                 @enderror
+        </div>
+
+        <div class="flex items-center  text-gray-800 mt-2">
+            <input wire:model="remember" type="checkbox" name="remember" id="remember" class="mr-2 ">
+            <label for="remember" class="text-sm">Remember me</label>
+        </div>
+        <div class="mt-6">
+            <button
+                class="w-full px-4 py-2 tracking-wide text-white transition-colors
+                 duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 
+                 focus:outline-none focus:bg-gray-600">
+                Login
+            </button>
+        </div>
+    </form>
+
+    <div class="flex items-center justify-between mt-4">
+        <span class="w-1/5 border-b dark:border-gray-600 lg:w-1/5"></span>
+
+        <a href="#" class="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">or login with
+            Social Media</a>
+
+        <span class="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
+    </div>
+
+    <div class="flex items-center mt-6 -mx-2">
+        <button type="button"
+            class="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none">
+            <svg class="w-4 h-4 mx-2 fill-current" viewBox="0 0 24 24">
+                <path
+                    d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z">
+                </path>
+            </svg>
+
+            <span class="hidden mx-2 sm:inline">Sign in with Google</span>
+        </button>
+
+    </div>
+
+    <p class="mt-8 text-xs font-light text-center text-gray-400"> Don't have an account? <a href="{{route('register')}}"
+            class="font-medium text-gray-800 dark:text-gray-200 hover:underline">Create One</a></p>
 </div>
