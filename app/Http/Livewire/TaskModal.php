@@ -11,10 +11,6 @@ class TaskModal extends ModalComponent
     public  $task;
     public  $project;
   
-    protected $listeners = [
-        'refreshTaskModal' => '$refresh'
-    ];
-
     public function mount( $task,$project)
     {    
         $this->task = $task;

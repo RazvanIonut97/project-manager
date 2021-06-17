@@ -13,10 +13,16 @@ class Task extends Model
         'group_id',
         'position',
         'project_id',
-        'priority'
+        'priority',
+        'description',
+        'due_date',
+        'user_id',
     ];
 
     public function group(){
         return $this->belongsTo(Group::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
