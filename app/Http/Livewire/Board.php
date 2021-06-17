@@ -7,19 +7,22 @@ use Livewire\Component;
 
 class Board extends Component
 {
-    protected $listeners = [
-        'refreshlists' => '$refresh'
-    ];
+   
     public $project;
     public $newGroupName;
     public $newTaskName;
     public $date;
 
+    protected $listeners = [
+        'refreshlists' => '$refresh'
+    ];
 public function removeTask($id){
     Task::destroy($id);
 }
 
-    
+public function removeGroup($id){
+    Group::destroy($id);
+}
 
     public function addTask($grupId,$value){
         $lastTask=Task::where('group_id','=',$grupId)->max('position');
@@ -27,7 +30,9 @@ public function removeTask($id){
        Task::create( [
         'title' => $value,
         'position' => $lastTask+1,
-        'group_id'=>$grupId
+        'group_id'=>$grupId,
+        'project_id'=>$this->project->id,
+        
        ]);
        $this-> reset('newTaskName');
     }

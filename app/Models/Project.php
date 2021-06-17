@@ -46,4 +46,7 @@ public function users(){
 public function groups(){
     return $this->hasMany(Group::class);
 }
+public function tasks(){
+    return $this->hasMany(Task::class);
+}
 }

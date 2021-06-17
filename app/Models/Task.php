@@ -12,6 +12,8 @@ class Task extends Model
         'title',
         'group_id',
         'position',
+        'project_id',
+        'priority'
     ];
 
     public function group(){

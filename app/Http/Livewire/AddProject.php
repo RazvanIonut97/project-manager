@@ -6,7 +6,7 @@ use LivewireUI\Modal\ModalComponent;
 
 class AddProject extends ModalComponent
 {
-
+    //
     
     public $name;
     public $about;

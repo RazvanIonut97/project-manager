@@ -1,51 +1,63 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ForgotPassword;
 use App\Http\Controllers\LogoutController;
 use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-   
+Route::get('/', function ()
+{
     return view('home');
 })->name('home');
 
-Route::get('/dashboard', function () {
-   
-     return view('projects.index');
-})->name('dashboard')->middleware('auth');
+Route::get('/dashboard', function ()
+{
 
-Route::get('/dashboard/{project}', function (Project $project) {
-    return view('projects.project',[
-        'project'=>$project
-    ]);
-})->name('project')->middleware('auth');
-
-Route::get('/tasks', function () {
     return view('projects.index');
-})->name('tasks');
+})
+    ->name('dashboard')
+    ->middleware('auth');
 
-Route::get('/login', function () {
+Route::get('/dashboard/{project}', function (Project $project){
+    return view('projects.project', ['project' => $project]);
+})->middleware('auth')->name('project');
+
+Route::get('/tasks', function ()
+{
+    return view('projects.index');
+})
+    ->name('tasks');
+
+Route::get('/login', function ()
+{
     return view('auth.login');
 })->name('login');
 
-Route::get('/register',function () {
+Route::get('/register', function ()
+{
     return view('auth.register');
-})->name('register');
+})
+    ->name('register');
 
-Route::get('/profile', function () {
+Route::get('/profile', function ()
+{
     return view('projects.index');
 })->name('profile');
 
-Route::post('/logout',[LogoutController::class,'index'])->name('logout');
+Route::post('/logout', [LogoutController::class , 'index'])->name('logout');
+
+Route::get('/forgot-password', [ForgotPassword::class,'index'])
+    ->middleware('guest')
+    ->name('password.request');
+
+Route::post('/forgot-password', [ForgotPassword::class,'recover'])
+    ->middleware('guest')
+    ->name('password.email');
+
+Route::get('/reset-password/{token}', function ($token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password', [ForgotPassword::class,'reset'])
+->name('password.update');
+

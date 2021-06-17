@@ -17,11 +17,10 @@ class AddList extends Component
             ->max('order');
             
         Group::create(['title' => $this->listName, 'order' => $lastGroup + 1,'project_id'=>$this->project]);
-        $this->emitTo('board', 'refreshLists');
-       // $this->emitTo('projects-list', 'refreshProjects');
+        $this->emitTo('board', 'refreshlists');
         $this->reset('listName');
     }
-
+   // wire:click="removeGroup({{$group->id}})"
     public function render()
     {
         return view('livewire.add-list');
