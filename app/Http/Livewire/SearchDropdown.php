@@ -22,10 +22,9 @@ class SearchDropdown extends Component
 
         Task::where('project_id',$this->project->id)
        ->where('user_id',$id)->update(['user_id'=>null]);
-      //->update('user_id',null);
-       // dd( $tasks);
         $this->project->users()->detach($id);
         $this->emitTo('search-dropdown', 'refreshDropdown');
+        $this->emitTo('board', 'refreshlists');
     }
 
     public function render()

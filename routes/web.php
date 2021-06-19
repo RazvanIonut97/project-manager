@@ -20,8 +20,7 @@ Route::get('/dashboard/project/{project}', function (Project $project)
 })->middleware(['hasAccess','auth'])->name('project');
 
 Route::get('/tasks', function ()
-{
-    return view('projects.index');
+{return view('projects.tasks');
 })->name('tasks');
 
 Route::get('/login', function ()

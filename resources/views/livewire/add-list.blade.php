@@ -1,10 +1,8 @@
 <div x-data="{isOpen:false,seeBtn:true}" @click.away="{isOpen=false,seeBtn=true}" class="relative">
 
     <div x-show="seeBtn" >
-    <button @click="{isOpen=true,seeBtn=false}" class="w-64 p-1 bg-gray-300 rounded-xl flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg> Add another list
+    <button @click="{isOpen=true,seeBtn=false}" class="w-64 p-1 bg-gray-300 rounded-xl flex font-semibold justify-center">
+       Add another list
     </button>
     </div>
 
