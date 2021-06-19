@@ -15,7 +15,7 @@
         <livewire:select-priority :priority="$item->priority" :task="$item->id" />
        
     </div>
-    <livewire:asign-task :userId="$item->user_id" :users="$users" :task="$item->id" />
+    <livewire:assign-task :userId="$item->user_id" :users="$users" :task="$item->id" />
  
     
 </div>

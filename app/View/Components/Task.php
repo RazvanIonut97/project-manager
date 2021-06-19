@@ -2,12 +2,14 @@
 
 namespace App\View\Components;
 
+use App\Models\Project;
 use Illuminate\View\Component;
 
 class Task extends Component
 {
     public $task;
     public $project;
+    public $acces;
     protected $listeners = [
         'refreshComponent' => '$refresh'
     ];
@@ -20,6 +22,7 @@ class Task extends Component
     {
        $this->task = $task;
        $this->project = $project;
+       $this->acces=Project::find($this->project);
     }
 
     /**

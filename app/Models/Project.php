@@ -14,6 +14,7 @@ class Project extends Model
        'name',
        'about',
        'user_id',
+       'history_status',
        
    ];
    protected static function booted()
@@ -48,5 +49,8 @@ public function groups(){
 }
 public function tasks(){
     return $this->hasMany(Task::class);
+}
+public function history(){
+    return $this->hasMany(History::class);
 }
 }

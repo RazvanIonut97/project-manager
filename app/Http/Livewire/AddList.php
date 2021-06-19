@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Livewire;
-
 use App\Models\Group;
+use App\Models\Project;
 use Livewire\Component;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AddList extends Component
 {
@@ -12,6 +13,8 @@ class AddList extends Component
 
     public function addList()
     {
+        $project=Project::find($this->project);
+       // $this->authorize('create',$project);
         $lastGroup = Group::where('project_id', '=', $this
             ->project)
             ->max('order');
@@ -20,7 +23,6 @@ class AddList extends Component
         $this->emitTo('board', 'refreshlists');
         $this->reset('listName');
     }
-   // wire:click="removeGroup({{$group->id}})"
     public function render()
     {
         return view('livewire.add-list');
