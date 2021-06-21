@@ -32,7 +32,7 @@
                                     {{$project->name}}</p></a>
                             <div class="p-2">
                             <p class="overflow-auto-y  h-12 text-sm">{{$project->about}}</p>
-                            <p class="text-sm text-center">{{$project->users->count()}} persoane</p>
+                            <p class="text-sm text-center">{{$project->users->count()}} people works at this project</p>
                         </div>
                         </div>
                         <div class="m-2 flex justify-between">

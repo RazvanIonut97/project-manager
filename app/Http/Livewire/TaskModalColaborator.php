@@ -27,7 +27,9 @@ class TaskModalColaborator extends Component
             'user'=>$user,
         ]);
     }
-
+    public function close(){
+        $this->closeModal();
+    }
     public function findUser($id){
         if($id==null){
             return "Unassigned";

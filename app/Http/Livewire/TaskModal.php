@@ -16,6 +16,9 @@ class TaskModal extends ModalComponent
         $this->task = $task;
         $this->project = $project;
     }
+    public function close(){
+        $this->closeModal();
+    }
     public function render()
     {
         return view('livewire.task-modal',[
