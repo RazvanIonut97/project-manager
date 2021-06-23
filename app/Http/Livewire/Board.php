@@ -24,6 +24,7 @@ class Board extends Component
     }
 
     public function addTask($grupId,$value){
+
         $lastTask=Task::where('group_id','=',$grupId)->max('position');
 
        Task::create( [
@@ -35,6 +36,8 @@ class Board extends Component
        ]);
        $this-> reset('newTaskName');
     }
+
+
     public function updateGroupOrder($list)
     {
 
@@ -42,14 +45,16 @@ class Board extends Component
         {
             Group::find($item['value'])-> update(['order' => $item['order']]);
         }
+
         if($this->project->history_status==1)
         {
         $this->createHistory("Lists");
         }
     }
-public function createHistory($value){
+
+    public function createHistory($value){
     $id=auth()->user()->id;
-    $id==$this->project->user_id ? $name="You " : $name=auth()->user()->name." has";
+    $id==$this->project->user_id ? $name="You " :$name=auth()->user()->surname." ".$name=auth()->user()->name." has";
 
     History::create([
         'user_id' =>$id,
@@ -57,7 +62,7 @@ public function createHistory($value){
         'action' => "$name made a change in $value",
     ]);
 }
-    public function updateTaskOrder($list)
+public function updateTaskOrder($list)
     {
         
         if($this->project->history_status==1)

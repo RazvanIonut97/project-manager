@@ -13,7 +13,6 @@ class EditTaskDescription extends Component
     public function change(){
 
         Task::find($this->task)->update(['description' => $this->text]);
-        //$this->emitTo('task-modal', 'refreshTaskModal');
         $this->emitTo('board', 'refreshlists');
     }
     public function render()

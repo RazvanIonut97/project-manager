@@ -13,7 +13,6 @@ class EditTaskName extends Component
     public function change(){
 
         Task::find($this->task)->update(['title' => $this->text]);
-        //$this->emitTo('task-modal', 'refreshTaskModal');
         $this->emitTo('board', 'refreshlists');
     }
     public function render()

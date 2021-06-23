@@ -12,7 +12,6 @@ class HistorySelect extends Component
 
     public function change(){
       Project::find($this->project)->update(['history_status' => $this->history]);
-     // $this->emitTo('board', 'refreshlists');
     }
     public function render()
     {

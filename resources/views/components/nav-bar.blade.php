@@ -1,7 +1,7 @@
 <nav class=" bg-gray-800 relative flex items-center justify-between h-14">
     <div class="items-center pl-5 font-extrabold text-white ">
         <h2>
-            <a href="">Project Manager</a>
+            <a href="">Issue Tracker</a>
         </h2>
     </div>
     

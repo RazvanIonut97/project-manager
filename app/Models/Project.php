@@ -20,24 +20,12 @@ class Project extends Model
    protected static function booted()
     {
         static::created(function ($project) {
-            // Create default statuses
+
             $project->groups()->createMany([
-                [
-                    'title' => 'Backlog',
-                    'order' => 1
-                ],
-                [
-                    'title' => 'Up Next',
-                    'order' => 2
-                ],
-                [
-                    'title' => 'In Progress',
-                    'order' => 3
-                ],
-                [
-                    'title' => 'Done',
-                    'order' => 4
-                ]
+                ['title' => 'Backlog','order' => 1],
+                ['title' => 'Up Next','order' => 2],
+                ['title' => 'In Progress','order' => 3],
+                ['title' => 'Done','order' => 4]
             ]);
         });
     }

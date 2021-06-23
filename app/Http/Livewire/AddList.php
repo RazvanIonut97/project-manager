@@ -4,6 +4,7 @@ use App\Models\Group;
 use App\Models\Project;
 use Livewire\Component;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use  Illuminate\Support\Facades\Gate;
 
 class AddList extends Component
 {
@@ -14,7 +15,8 @@ class AddList extends Component
     public function addList()
     {
         $project=Project::find($this->project);
-       // $this->authorize('create',$project);
+        Gate::authorize('edit',$project);
+      
         $lastGroup = Group::where('project_id', '=', $this
             ->project)
             ->max('order');

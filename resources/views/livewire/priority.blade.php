@@ -11,7 +11,4 @@
 @case(4)
 <div class="w-3 bg-blue-500 rounded-l h-12"></div>  
     @break
-
-@default
-<div class="w-3 bg-green-500 rounded-l h-12"></div>
 @endswitch 

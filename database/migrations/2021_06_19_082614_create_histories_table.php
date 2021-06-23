@@ -18,7 +18,7 @@ class CreateHistoriesTable extends Migration
             $table->timestamps();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('project_id')->constrained()->onDelete('cascade');
-            $table->string('action');
+            $table->text('action');
         });
     }
 

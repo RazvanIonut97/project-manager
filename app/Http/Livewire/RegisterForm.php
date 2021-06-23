@@ -20,6 +20,12 @@ class RegisterForm extends Component
         'email' => 'required|email|unique:users',
         'password' => 'required|confirmed|min:6',
     ];
+   
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public function onSubmit ()
     {
         $validatedData = $this->validate();
@@ -28,10 +34,6 @@ class RegisterForm extends Component
         User::create($validatedData);
         auth()->attempt(['email' => $this->email, 'password' => $this->password]);
         return redirect()->route('dashboard');
-    }
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
     }
     public function render()
     {

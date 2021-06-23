@@ -12,7 +12,7 @@
        onclick='Livewire.emit("openModal", "task-modal-colaborator",{{ json_encode(["task" => $task->id,"project"=>$project]) }})'   
        @endif 
             class=" w-full">
-            <p class="break-all text-gray-800">{{ $task->title }}</p>
+            <p class="break-normal text-gray-800 font-medium">{{ $task->title }}</p>
             <div class="text-gray-500 text-sm">
 
                 @if ($task->due_date)

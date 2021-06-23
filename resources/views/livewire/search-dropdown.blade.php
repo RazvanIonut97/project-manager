@@ -2,7 +2,7 @@
     <p class="mr-2">Invite</p>
     <div x-data="{isOpen:true}" @click.away="isOpen=false">
         
-        <input wire:model="search" @focus="isOpen=true" type="text" class="w-48 rounded pl-2  mr-2"
+        <input wire:model="search" @focus="isOpen=true" type="search" class="w-48 rounded pl-2  mr-2"
             placeholder="Search by email">
            
         @if(strlen($search)>2)
@@ -15,7 +15,11 @@
                 @if($project->users->contains('id',$result->id))
                 <li wire:click="unassignUser({{$result->id}})" 
                 class="border-b border-gray-200 hover:bg-red-100 flex justify-between items-center">
-                    <p class="px-3 py-2 "> {{$result->name}} {{$result->surname}}</p>
+                    
+                    <div class="pl-1 w-36 h-12" >   
+                    <div class="flex "><p class=" "> {{$result->name}} {{$result->surname}}</p></div>
+                    <p class=" font-thin text-sm text-gray-400 truncate">{{$result->email}}</p>
+                    </div>
 
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20"
                         fill="currentColor">
@@ -27,7 +31,10 @@
                 @else
                 <li wire:click="assignUser({{$result->id}})"
                     class="border-b border-gray-200 hover:bg-red-100 flex justify-between items-center">
-                    <p class="px-3 py-2 "> {{$result->name}} {{$result->surname}}</p>
+                    <div class="pl-1 w-36 h-12" >   
+                        <div class="flex "><p class=" "> {{$result->name}} {{$result->surname}}</p></div>
+                        <p class=" font-thin text-sm text-gray-400 truncate">{{$result->email}}</p>
+                        </div>
                 </li>
                 @endif
                 @endforeach

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function ()
 {
-    return view('home');
+    return redirect('dashboard');
 })->name('home');
 
 Route::get('/dashboard', function ()
@@ -35,7 +35,7 @@ Route::get('/register', function ()
 
 Route::get('/profile', function ()
 {
-    return view('projects.index');
+    return view('projects.profile');
 })->name('profile');
 
 Route::post('/logout', [LogoutController::class , 'index'])->middleware('auth')->name('logout');

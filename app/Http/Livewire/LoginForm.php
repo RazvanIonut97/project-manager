@@ -14,6 +14,7 @@ class LoginForm extends Component
         'email' => 'required|email',
         'password' => 'required',
     ];
+
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
@@ -23,7 +24,7 @@ class LoginForm extends Component
     {
         $validatedData = $this->validate();
 
-        if(!auth()->attempt(['email' => $this->email, 'password' => $this->password],$this->remember) ){
+        if(!auth()->attempt($validatedData,$this->remember) ){
             return back()->with('status','Invalid login details');
         }
 

@@ -1,12 +1,12 @@
 <div class="p-4 select-none font-semibold ">
     <div class="h-12 w-full flex justify-between px-3 items-center mb-3 bg-gray-200 rounded ">
-        <div class="flex">
+        <div class="flex items-center">
             @if ($project->user_id==auth()->user()->id)
             <h3 class="bg-green-800 text-white p-1 rounded mr-6">Owner</h3>
             @else
             <h3 class="bg-yellow-600 text-white p-1 rounded mr-6">Colaborator</h3>
             @endif
-            <h3>{{$project->name}}-{{$selectedTask}}</h3>
+            <h3 class="uppercase">{{$project->name}}</h3>
         </div>
 
         @can('edit', $project)

@@ -33,7 +33,6 @@ class SearchDropdown extends Component
         if(strlen($this->search)>2){
             $results=User::where('email','like','%'.$this->search.'%')->get();
         }
-       
         
         return view('livewire.search-dropdown',[
             'results'=> $results

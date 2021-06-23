@@ -27,19 +27,37 @@
         
                     <div class="mr-3 bg-white shadow-lg rounded-lg  border border-gray-200 mb-5 ">
                         <div class="divide-y divide-gray-400">
-                            <a href="{{route('project',$project)}}">
-                                <p class="text-lg capitalize bg-gray-800 pl-2 text-white rounded-t-lg hover:bg-gray-600">
-                                    {{$project->name}}</p></a>
+                            <a href="{{route('project',$project)}}" class="flex justify-between bg-gray-800 text-white rounded-t-lg hover:bg-gray-600">
+                                <p class="text-lg uppercase  pl-2">
+                                    {{$project->name}} </p> 
+                                    @if($project->user_id==auth()->user()->id)
+                                    <p class="capitalize pr-3">-owner-</p>
+                                    @else
+                                    <p class="capitalize pr-3">-colaborator-</p>
+                                    @endif
+                                </a>
                             <div class="p-2">
-                            <p class="overflow-auto-y  h-12 text-sm">{{$project->about}}</p>
-                            <p class="text-sm text-center">{{$project->users->count()}} people works at this project</p>
+                            <p class=" overflow-ellipsis overflow-hidden  h-16 text-sm">{{$project->about}}</p>
+                            <p class="text-sm text-center font-semibold">
+                                @if ($project->users->count()==1)
+                                Just you work at this project</p> 
+                                @else
+                                {{$project->users->count()}} people works at this project</p>
+                                @endif
+                               
                         </div>
                         </div>
                         <div class="m-2 flex justify-between">
-                            <button class="bg-blue-800 text-white px-3 py-1 mr-2 rounded">Open</button>
+                            <button class="bg-blue-800 text-white px-3 py-1 mr-2 rounded">
+                               <a href="{{route('project',$project)}}"> Open</a></button>
                             <div>
-                                <button class="bg-green-800 text-white px-3 py-1  mr-2 rounded">Edit</button>
-                                <button class="bg-red-800 text-white px-3 py-1 rounded">Delete</button>
+                                @can('edit', $project)
+                               
+                                <button wire:click='$emit("openModal", "edit-project",{{ json_encode(["project"=>$project->id]) }})'   
+
+                                class="bg-green-800 text-white px-3 py-1  mr-2 rounded">Edit</button>
+                                <button wire:click='$emit("openModal", "delete-project",{{ json_encode(["project"=>$project->id]) }})'  class="bg-red-800 text-white px-3 py-1 rounded">Delete</button>
+                                @endcan
                             </div>
                         </div>
                     </div>

@@ -9,7 +9,7 @@
     <p class="text-xs"><u>{{$history->created_at}}</u></p>
 </div>
 @endforeach
-    
+
     @endif
   
 </div>
